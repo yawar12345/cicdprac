@@ -12,6 +12,15 @@ export class InventoryPage extends BasePage {
     this.cartBadge = page.locator('.shopping_cart_badge');
     this.cartLink = page.locator('.shopping_cart_link');
     this.sortDropdown = page.locator('[data-test="product-sort-container"]');
+
+    // Hamburger menu (top-left) ke andar Logout link hota hai.
+    this.menuButton = page.locator('#react-burger-menu-btn');
+    this.logoutLink = page.locator('#logout_sidebar_link');
+  }
+
+  async logout() {
+    await this.menuButton.click();
+    await this.logoutLink.click();
   }
 
   // Product naam se us product ka "Add to cart" button dhoondna.
