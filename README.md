@@ -7,6 +7,9 @@ Yeh ek chhota, simple project hai jo Playwright ke zyada important concepts
 Detailed concept explanations ke liye **[INTERVIEW_PREP.md](./INTERVIEW_PREP.md)**
 padhein — woh is project ka sabse important document hai.
 
+Git + GitHub Actions (CI/CD) concepts isi repo ke real commits/branches/PR
+ke sath samajhne ke liye **[GIT_CICD_PREP.md](./GIT_CICD_PREP.md)** dekhein.
+
 ---
 
 ## Test sites (koi setup/login ki zaroorat nahi)
