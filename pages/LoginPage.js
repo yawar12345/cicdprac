@@ -21,9 +21,25 @@ export class LoginPage extends BasePage {
     this.errorMessage = page.locator('[data-test="error"]');
   }
 
+  // super vs this — yahan 'super' isliye zaroori hai kyunki is method
+  // ka naam ('goto') PARENT (BasePage) mein bhi same hai — yeh OVERRIDE hai.
+  // 'this.goto('/')' likhte to yeh khud ko hi dobara bulata (infinite loop),
+  // kyunki JS pehle LoginPage mein hi 'goto' dhoondti, aur yahin mil jata.
   async goto() {
     await super.goto('/'); // saucedemo ka login page hi homepage hai
   }
+
+  // COMPARISON (sirf samajhne ke liye, use nahi ho raha):
+  // Agar naam badal kar 'openLoginPage' rakhte (koi override nahi),
+  // to 'super' ki zaroorat hi na padti — 'this.goto' seedha
+  // prototype chain se BasePage tak khud pahunch jata:
+  //
+  //   async openLoginPage() {
+  //     await this.goto('/');   // yeh bhi chal jata, kyunki naam takra nahi raha
+  //   }
+  //
+  // Rule: naam takra raha ho (override) -> 'super' chahiye.
+  //       naam alag ho (koi override nahi) -> 'this' hi kaafi hai.
 
   async login(username, password) {
     await this.usernameInput.fill(username);
